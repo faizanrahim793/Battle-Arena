@@ -1,0 +1,254 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<title>FF Tournament | Esports</title>
+<style>
+:root{--bg:#101010;--card:#1b1b1b;--red:#ff3838;--orange:#ff782e;--text:#fff;--muted:#aaa}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:#151515;border-bottom:1px solid #333;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{font-size:20px;font-weight:900}.logo span{color:var(--red)}
+nav{display:flex;gap:14px;flex-wrap:wrap}
+nav a{color:#ddd;text-decoration:none;font-size:13px}
+.hero{padding:55px 6% 45px;text-align:center;background:radial-gradient(ellipse at top,#502020,#101010 70%)}
+.tag{color:#ff8585;font-size:12px;letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(34px,8vw,58px);margin:15px 0}
+h1 span{color:var(--red)}
+p{line-height:1.6}
+.hero p{color:#ccc;max-width:500px;margin:0 auto 24px}
+.btn{display:inline-block;border:0;border-radius:8px;padding:13px 18px;background:var(--red);color:white;text-decoration:none;font-weight:bold;cursor:pointer}
+.btn.secondary{background:#303030;border:1px solid #555}
+section{padding:30px 5%;max-width:1100px;margin:auto}
+.section-title{font-size:25px;margin:0 0 8px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.tab{background:#222;color:white;border:1px solid #444;border-radius:20px;padding:9px 15px;cursor:pointer}
+.tab.active{background:var(--red);border-color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid #333;border-radius:13px;padding:18px}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.mode{font-size:12px;color:#ff9999;background:#402020;padding:6px 9px;border-radius:6px}
+.status{font-size:11px;color:#91f2a5}
+.card h3{margin:17px 0 8px;font-size:20px}
+.details{color:#bbb;font-size:13px;line-height:2}
+.card .btn{width:100%;margin-top:12px}
+.prize{font-size:24px;font-weight:800;color:#ffb04c;margin:8px 0}
+.panel{background:var(--card);border:1px solid #333;border-radius:13px;padding:20px}
+form{display:grid;gap:14px}
+label{display:grid;gap:7px;font-size:13px;color:#ddd}
+input,select{width:100%;padding:13px;border:1px solid #444;border-radius:8px;background:#111;color:white;font:inherit}
+input:focus,select:focus{outline:1px solid var(--red)}
+.note{font-size:12px;color:#aaa}
+.notice{background:#292015;border:1px solid #694b27;border-radius:8px;padding:12px;color:#f4d8a8;font-size:12px;line-height:1.5}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:12px 8px;border-bottom:1px solid #333}
+th{color:#ff9999}
+.empty{color:#aaa;font-size:14px;padding:16px 0}
+footer{text-align:center;color:#888;border-top:1px solid #333;padding:25px;font-size:12px}
+@media(max-width:430px){header{padding:12px 4%}.logo{font-size:17px}nav{gap:9px}nav a{font-size:11px}.hero{padding-top:42px}section{padding:26px 4%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">FF <span>TOURNAMENT</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#matches">Matches</a>
+    <a href="#register">Register</a>
+    <a href="#results">Results</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home" style="max-width:none">
+  <div class="tag">YOUR GAME. YOUR GLORY.</div>
+  <h1>ENTER THE <span>BATTLE</span></h1>
+  <p>Join tournaments, build your squad and compete. Your next victory starts here!</p>
+  <a class="btn" href="#matches">Explore Tournaments ↓</a>
+</section>
+
+<section id="matches">
+  <h2 class="section-title">🏆 Upcoming Tournaments</h2>
+  <p class="sub">Choose your mode and register for a match.</p>
+  <div class="tabs" id="tabs">
+    <button class="tab active" data-mode="All">All</button>
+    <button class="tab" data-mode="Solo">Solo</button>
+    <button class="tab" data-mode="Duo">Duo</button>
+    <button class="tab" data-mode="Squad">Squad</button>
+  </div>
+  <div class="grid" id="tournaments"></div>
+</section>
+
+<section id="register">
+  <h2 class="section-title">📝 Player Registration</h2>
+  <p class="sub">Fill in your details to submit your registration.</p>
+  <div class="panel">
+    <form id="registrationForm">
+      <label>Player name
+        <input name="player" maxlength="30" required placeholder="Enter your in-game name">
+      </label>
+      <label>Free Fire UID
+        <input name="uid" inputmode="numeric" pattern="[0-9]{5,20}" required placeholder="Your numeric game UID">
+      </label>
+      <label>Team name (enter N/A for Solo)
+        <input name="team" maxlength="30" required placeholder="Enter team name">
+      </label>
+      <label>Contact email (optional)
+        <input name="email" type="email" maxlength="100" placeholder="you@example.com">
+      </label>
+      <label>Select tournament
+        <select name="tournament" id="tournamentSelect" required>
+          <option value="">Choose a tournament</option>
+        </select>
+      </label>
+      <button class="btn" type="submit">Submit Registration</button>
+      <p class="note">Use only details needed for tournament management. Do not enter passwords or payment PINs.</p>
+    </form>
+    <p id="message" role="status" aria-live="polite"></p>
+  </div>
+  <div class="notice" style="margin-top:14px">
+    Demo version: registrations are stored only in this browser on this device. They are NOT sent to an organiser or shared database. Clearing browser data may erase them.
+  </div>
+</section>
+
+<section id="results">
+  <h2 class="section-title">📊 Leaderboard</h2>
+  <p class="sub">Sample rankings — replace these with verified match results.</p>
+  <div class="panel" style="overflow-x:auto">
+    <table>
+      <thead><tr><th>Rank</th><th>Player / Team</th><th>Points</th></tr></thead>
+      <tbody>
+        <tr><td>🥇 1</td><td>Sample Team Alpha</td><td>100</td></tr>
+        <tr><td>🥈 2</td><td>Sample Team Bravo</td><td>80</td></tr>
+        <tr><td>🥉 3</td><td>Sample Team Charlie</td><td>65</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="myRegistrations">
+  <h2 class="section-title">📋 Registrations on This Device</h2>
+  <p class="sub">Entries saved by this browser only.</p>
+  <div id="registrationList" class="panel"><p class="empty">No registrations yet.</p></div>
+</section>
+</main>
+
+<footer>
+  FF Tournament · Community tournament demo<br><br>
+  Fan-made project. Not affiliated with or endorsed by Garena.
+</footer>
+
+<script>
+const tournaments = [
+ {id:"solo-1",name:"Solo Showdown",mode:"Solo",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"},
+ {id:"duo-1",name:"Duo Warriors",mode:"Duo",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"},
+ {id:"squad-1",name:"Squad Championship",mode:"Squad",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"}
+];
+
+const tournamentContainer = document.getElementById("tournaments");
+const select = document.getElementById("tournamentSelect");
+
+function renderTournaments(mode="All") {
+  const filtered = tournaments.filter(t => mode==="All" || t.mode===mode);
+  tournamentContainer.innerHTML = filtered.map(t => `
+    <article class="card">
+      <div class="card-top">
+        <span class="mode">${t.mode}</span>
+        <span class="status">● Demo</span>
+      </div>
+      <h3>${t.name}</h3>
+      <div class="prize">${t.prize}</div>
+      <div class="details">
+        📅 ${t.date}<br>
+        🎮 Mode: ${t.mode}<br>
+        🎟️ ${t.entry}
+      </div>
+      <button class="btn" data-register="${t.id}">Register Now</button>
+    </article>`).join("");
+  tournamentContainer.querySelectorAll("[data-register]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      select.value = btn.dataset.register;
+      document.getElementById("register").scrollIntoView({behavior:"smooth"});
+    });
+  });
+}
+
+function renderOptions() {
+  select.innerHTML = '<option value="">Choose a tournament</option>' +
+    tournaments.map(t => `<option value="${t.id}">${t.name} (${t.mode})</option>`).join("");
+}
+
+function getRegistrations() {
+  try { return JSON.parse(localStorage.getItem("ffDemoRegistrations") || "[]"); }
+  catch { return []; }
+}
+
+function renderRegistrations() {
+  const list = document.getElementById("registrationList");
+  const entries = getRegistrations();
+  if (!entries.length) {
+    list.innerHTML = '<p class="empty">No registrations yet.</p>';
+    return;
+  }
+  list.innerHTML = entries.map((r,i) => `
+    <div style="padding:12px 0;border-bottom:1px solid #333">
+      <strong>${i+1}. ${escapeHTML(r.player)}</strong>
+      <div class="details">UID: ${escapeHTML(r.uid)} · Team: ${escapeHTML(r.team)}<br>
+      Tournament: ${escapeHTML(r.tournamentName)}</div>
+    </div>`).join("");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const btn = e.target.closest("[data-mode]");
+  if (!btn) return;
+  document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active",b===btn));
+  renderTournaments(btn.dataset.mode);
+});
+
+document.getElementById("registrationForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  if (!form.reportValidity()) return;
+  const data = Object.fromEntries(new FormData(form).entries());
+  const tournament = tournaments.find(t => t.id===data.tournament);
+  if (!tournament) {
+    document.getElementById("message").textContent = "Please select a valid tournament.";
+    return;
+  }
+  const entries = getRegistrations();
+  entries.push({
+    player:data.player.trim(),
+    uid:data.uid.trim(),
+    team:data.team.trim(),
+    email:data.email.trim(),
+    tournamentName:tournament.name
+  });
+  try {
+    localStorage.setItem("ffDemoRegistrations",JSON.stringify(entries));
+    document.getElementById("message").textContent =
+      "Demo registration saved on this device only. The organiser has NOT been notified.";
+    form.reset();
+    renderRegistrations();
+  } catch {
+    document.getElementById("message").textContent =
+      "Could not save on this device. Check browser storage settings.";
+  }
+});
+
+renderOptions();
+renderTournaments();
+renderRegistrations();
+</script>
+</body>
+</html>
