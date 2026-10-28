@@ -3,54 +3,53 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#101010">
-<title>FF Tournament | Esports</title>
+<title>FF Tournament | Battle Arena</title>
 <style>
-:root{--bg:#101010;--card:#1b1b1b;--red:#ff3838;--orange:#ff782e;--text:#fff;--muted:#aaa}
+:root{--bg:#101010;--card:#1c1c1c;--red:#ff3939;--orange:#ff7b35;--white:#fff;--muted:#aaa}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{position:sticky;top:0;z-index:5;background:#151515;border-bottom:1px solid #333;padding:14px 5%;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:20px;font-weight:900}.logo span{color:var(--red)}
-nav{display:flex;gap:14px;flex-wrap:wrap}
-nav a{color:#ddd;text-decoration:none;font-size:13px}
-.hero{padding:55px 6% 45px;text-align:center;background:radial-gradient(ellipse at top,#502020,#101010 70%)}
-.tag{color:#ff8585;font-size:12px;letter-spacing:2px;font-weight:bold}
-h1{font-size:clamp(34px,8vw,58px);margin:15px 0}
-h1 span{color:var(--red)}
-p{line-height:1.6}
-.hero p{color:#ccc;max-width:500px;margin:0 auto 24px}
-.btn{display:inline-block;border:0;border-radius:8px;padding:13px 18px;background:var(--red);color:white;text-decoration:none;font-weight:bold;cursor:pointer}
-.btn.secondary{background:#303030;border:1px solid #555}
-section{padding:30px 5%;max-width:1100px;margin:auto}
-.section-title{font-size:25px;margin:0 0 8px}
-.sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:15px 5%;background:#151515;border-bottom:1px solid #333}
+.logo{font-size:19px;font-weight:900;white-space:nowrap}
+.logo span,h1 span{color:var(--red)}
+nav{display:flex;gap:12px;flex-wrap:wrap}
+nav a{font-size:12px;color:#ddd;text-decoration:none}
+.hero{padding:55px 5%;text-align:center;background:radial-gradient(ellipse at top,#562020,#101010 70%)}
+.tag{font-size:12px;letter-spacing:3px;color:#ff9999;font-weight:bold}
+h1{font-size:clamp(35px,9vw,58px);margin:16px 0}
+.hero p{max-width:480px;margin:0 auto 24px;color:#ccc;line-height:1.7}
+.btn{display:inline-block;padding:13px 18px;border:0;border-radius:8px;background:var(--red);color:white;text-decoration:none;font-weight:bold;cursor:pointer}
+.btn:disabled{opacity:.6;cursor:wait}
+section{max-width:1100px;margin:auto;padding:30px 5%}
+h2{font-size:24px;margin:0 0 8px}
+.sub{color:var(--muted);font-size:14px;line-height:1.6;margin:0 0 22px}
 .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.tab{background:#222;color:white;border:1px solid #444;border-radius:20px;padding:9px 15px;cursor:pointer}
+.tab{padding:9px 15px;border:1px solid #444;border-radius:20px;background:#222;color:#fff;cursor:pointer}
 .tab.active{background:var(--red);border-color:var(--red)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid #333;border-radius:13px;padding:18px}
-.card-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
-.mode{font-size:12px;color:#ff9999;background:#402020;padding:6px 9px;border-radius:6px}
-.status{font-size:11px;color:#91f2a5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(225px,1fr));gap:15px}
+.card,.panel{background:var(--card);border:1px solid #333;border-radius:13px;padding:18px}
+.cardtop{display:flex;justify-content:space-between;gap:8px}
+.pill{font-size:12px;padding:6px 9px;border-radius:6px;background:#402020;color:#ffb4b4}
+.status{font-size:11px;color:#9ff0ae}
 .card h3{margin:17px 0 8px;font-size:20px}
-.details{color:#bbb;font-size:13px;line-height:2}
-.card .btn{width:100%;margin-top:12px}
-.prize{font-size:24px;font-weight:800;color:#ffb04c;margin:8px 0}
-.panel{background:var(--card);border:1px solid #333;border-radius:13px;padding:20px}
+.prize{font-size:23px;font-weight:800;color:#ffb04c;margin:10px 0}
+.details{color:#bbb;font-size:13px;line-height:2;overflow-wrap:anywhere}
+.card .btn{width:100%;margin-top:14px}
 form{display:grid;gap:14px}
 label{display:grid;gap:7px;font-size:13px;color:#ddd}
 input,select{width:100%;padding:13px;border:1px solid #444;border-radius:8px;background:#111;color:white;font:inherit}
 input:focus,select:focus{outline:1px solid var(--red)}
-.note{font-size:12px;color:#aaa}
-.notice{background:#292015;border:1px solid #694b27;border-radius:8px;padding:12px;color:#f4d8a8;font-size:12px;line-height:1.5}
+.note{font-size:12px;line-height:1.6;color:#aaa}
+.notice{padding:12px;background:#292015;border:1px solid #694b27;border-radius:8px;color:#f4d8a8;font-size:12px;line-height:1.6}
+.message{font-size:14px;line-height:1.6;overflow-wrap:anywhere}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{text-align:left;padding:12px 8px;border-bottom:1px solid #333}
 th{color:#ff9999}
-.empty{color:#aaa;font-size:14px;padding:16px 0}
-footer{text-align:center;color:#888;border-top:1px solid #333;padding:25px;font-size:12px}
-@media(max-width:430px){header{padding:12px 4%}.logo{font-size:17px}nav{gap:9px}nav a{font-size:11px}.hero{padding-top:42px}section{padding:26px 4%}}
+.empty{color:#aaa;font-size:14px;line-height:1.6}
+footer{text-align:center;color:#888;border-top:1px solid #333;padding:25px;font-size:12px;line-height:1.8}
+@media(max-width:430px){header{padding:12px 4%}.logo{font-size:15px}nav{gap:8px}nav a{font-size:11px}.hero{padding-top:42px}section{padding:25px 4%}}
 </style>
 </head>
 <body>
@@ -68,187 +67,249 @@ footer{text-align:center;color:#888;border-top:1px solid #333;padding:25px;font-
 <section class="hero" id="home" style="max-width:none">
   <div class="tag">YOUR GAME. YOUR GLORY.</div>
   <h1>ENTER THE <span>BATTLE</span></h1>
-  <p>Join tournaments, build your squad and compete. Your next victory starts here!</p>
+  <p>Find tournaments, register your squad and compete for the top spot.</p>
   <a class="btn" href="#matches">Explore Tournaments ↓</a>
 </section>
 
 <section id="matches">
-  <h2 class="section-title">🏆 Upcoming Tournaments</h2>
-  <p class="sub">Choose your mode and register for a match.</p>
+  <h2>🏆 Upcoming Tournaments</h2>
+  <p class="sub">Choose your mode and join an available tournament.</p>
   <div class="tabs" id="tabs">
     <button class="tab active" data-mode="All">All</button>
     <button class="tab" data-mode="Solo">Solo</button>
     <button class="tab" data-mode="Duo">Duo</button>
     <button class="tab" data-mode="Squad">Squad</button>
   </div>
-  <div class="grid" id="tournaments"></div>
+  <div id="tournaments" class="grid">
+    <p class="empty">Connecting to tournament database...</p>
+  </div>
+  <p id="loadMessage" class="note" role="status"></p>
 </section>
 
 <section id="register">
-  <h2 class="section-title">📝 Player Registration</h2>
-  <p class="sub">Fill in your details to submit your registration.</p>
+  <h2>📝 Player Registration</h2>
+  <p class="sub">Enter your details to register for a tournament.</p>
   <div class="panel">
     <form id="registrationForm">
       <label>Player name
-        <input name="player" maxlength="30" required placeholder="Enter your in-game name">
+        <input name="player" maxlength="30" required placeholder="Your in-game name">
       </label>
       <label>Free Fire UID
-        <input name="uid" inputmode="numeric" pattern="[0-9]{5,20}" required placeholder="Your numeric game UID">
+        <input name="uid" inputmode="numeric" pattern="[0-9]{5,20}" required placeholder="Numeric game UID">
       </label>
       <label>Team name (enter N/A for Solo)
-        <input name="team" maxlength="30" required placeholder="Enter team name">
-      </label>
-      <label>Contact email (optional)
-        <input name="email" type="email" maxlength="100" placeholder="you@example.com">
+        <input name="team" maxlength="30" required placeholder="Your team name">
       </label>
       <label>Select tournament
         <select name="tournament" id="tournamentSelect" required>
           <option value="">Choose a tournament</option>
         </select>
       </label>
-      <button class="btn" type="submit">Submit Registration</button>
-      <p class="note">Use only details needed for tournament management. Do not enter passwords or payment PINs.</p>
+      <button class="btn" id="submitBtn" type="submit">Submit Registration</button>
     </form>
-    <p id="message" role="status" aria-live="polite"></p>
-  </div>
-  <div class="notice" style="margin-top:14px">
-    Demo version: registrations are stored only in this browser on this device. They are NOT sent to an organiser or shared database. Clearing browser data may erase them.
+    <p class="message" id="message" role="status" aria-live="polite"></p>
+    <p class="note">Submit only the details required to enter. Never share your game password, OTP or payment PIN.</p>
   </div>
 </section>
 
 <section id="results">
-  <h2 class="section-title">📊 Leaderboard</h2>
-  <p class="sub">Sample rankings — replace these with verified match results.</p>
+  <h2>📊 Leaderboard</h2>
+  <p class="sub">Official results will be added after matches are verified.</p>
   <div class="panel" style="overflow-x:auto">
     <table>
       <thead><tr><th>Rank</th><th>Player / Team</th><th>Points</th></tr></thead>
-      <tbody>
-        <tr><td>🥇 1</td><td>Sample Team Alpha</td><td>100</td></tr>
-        <tr><td>🥈 2</td><td>Sample Team Bravo</td><td>80</td></tr>
-        <tr><td>🥉 3</td><td>Sample Team Charlie</td><td>65</td></tr>
+      <tbody id="leaderboard">
+        <tr><td colspan="3" class="empty">No verified results published yet.</td></tr>
       </tbody>
     </table>
   </div>
 </section>
-
-<section id="myRegistrations">
-  <h2 class="section-title">📋 Registrations on This Device</h2>
-  <p class="sub">Entries saved by this browser only.</p>
-  <div id="registrationList" class="panel"><p class="empty">No registrations yet.</p></div>
-</section>
 </main>
 
 <footer>
-  FF Tournament · Community tournament demo<br><br>
-  Fan-made project. Not affiliated with or endorsed by Garena.
+  FF Tournament · Community esports project<br>
+  Fan-made website. Not affiliated with or endorsed by Garena.
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const tournaments = [
- {id:"solo-1",name:"Solo Showdown",mode:"Solo",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"},
- {id:"duo-1",name:"Duo Warriors",mode:"Duo",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"},
- {id:"squad-1",name:"Squad Championship",mode:"Squad",date:"Demo date — to be announced",prize:"Demo prize",entry:"Free entry"}
-];
+/* Replace both placeholders with your own Supabase details. */
+const SUPABASE_URL = "https://psjjhumdknxcwkjrckma.supabase.co;
+const SUPABASE_KEY = "sb_publishable_dJc5jzPFerRdB-aYFt2v0w_9vL913xC";
 
-const tournamentContainer = document.getElementById("tournaments");
+const container = document.getElementById("tournaments");
 const select = document.getElementById("tournamentSelect");
+const message = document.getElementById("message");
+const loadMessage = document.getElementById("loadMessage");
+const submitBtn = document.getElementById("submitBtn");
 
-function renderTournaments(mode="All") {
-  const filtered = tournaments.filter(t => mode==="All" || t.mode===mode);
-  tournamentContainer.innerHTML = filtered.map(t => `
-    <article class="card">
-      <div class="card-top">
-        <span class="mode">${t.mode}</span>
-        <span class="status">● Demo</span>
+let db = null;
+let tournaments = [];
+let currentMode = "All";
+
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  }[c]));
+}
+
+function setupDatabase() {
+  if (!window.supabase) {
+    throw new Error("Database library could not load. Check your internet connection.");
+  }
+  if (SUPABASE_URL.includes("YOUR_") ||
+      SUPABASE_KEY.includes("YOUR_")) {
+    throw new Error("Add your Supabase URL and publishable key in index.html first.");
+  }
+  db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+}
+
+function renderOptions() {
+  const available = tournaments.filter(t => t.status === "upcoming");
+  select.innerHTML =
+    '<option value="">Choose a tournament</option>' +
+    available.map(t =>
+      `<option value="${t.id}">${escapeHTML(t.name)} (${escapeHTML(t.mode)})</option>`
+    ).join("");
+}
+
+function renderTournaments() {
+  const items = tournaments.filter(t =>
+    currentMode === "All" || t.mode === currentMode
+  );
+
+  if (!items.length) {
+    container.innerHTML = '<p class="empty">No tournaments in this category.</p>';
+    return;
+  }
+
+  container.innerHTML = items.map(t => {
+    const date = t.match_time
+      ? new Date(t.match_time).toLocaleString()
+      : "Date to be announced";
+    const canRegister = t.status === "upcoming";
+
+    return `<article class="card">
+      <div class="cardtop">
+        <span class="pill">${escapeHTML(t.mode)}</span>
+        <span class="status">${escapeHTML(t.status)}</span>
       </div>
-      <h3>${t.name}</h3>
-      <div class="prize">${t.prize}</div>
+      <h3>${escapeHTML(t.name)}</h3>
+      <div class="prize">Free Entry</div>
       <div class="details">
-        📅 ${t.date}<br>
-        🎮 Mode: ${t.mode}<br>
-        🎟️ ${t.entry}
+        📅 ${escapeHTML(date)}<br>
+        🎮 Mode: ${escapeHTML(t.mode)}<br>
+        🏁 Tournament ID: ${escapeHTML(t.id)}
       </div>
-      <button class="btn" data-register="${t.id}">Register Now</button>
-    </article>`).join("");
-  tournamentContainer.querySelectorAll("[data-register]").forEach(btn => {
-    btn.addEventListener("click", () => {
-      select.value = btn.dataset.register;
+      ${canRegister
+        ? `<button class="btn" data-id="${escapeHTML(t.id)}">Register Now</button>`
+        : `<p class="note">Registration is not open.</p>`}
+    </article>`;
+  }).join("");
+
+  container.querySelectorAll("[data-id]").forEach(button => {
+    button.addEventListener("click", () => {
+      select.value = button.dataset.id;
       document.getElementById("register").scrollIntoView({behavior:"smooth"});
     });
   });
 }
 
-function renderOptions() {
-  select.innerHTML = '<option value="">Choose a tournament</option>' +
-    tournaments.map(t => `<option value="${t.id}">${t.name} (${t.mode})</option>`).join("");
-}
-
-function getRegistrations() {
-  try { return JSON.parse(localStorage.getItem("ffDemoRegistrations") || "[]"); }
-  catch { return []; }
-}
-
-function renderRegistrations() {
-  const list = document.getElementById("registrationList");
-  const entries = getRegistrations();
-  if (!entries.length) {
-    list.innerHTML = '<p class="empty">No registrations yet.</p>';
-    return;
-  }
-  list.innerHTML = entries.map((r,i) => `
-    <div style="padding:12px 0;border-bottom:1px solid #333">
-      <strong>${i+1}. ${escapeHTML(r.player)}</strong>
-      <div class="details">UID: ${escapeHTML(r.uid)} · Team: ${escapeHTML(r.team)}<br>
-      Tournament: ${escapeHTML(r.tournamentName)}</div>
-    </div>`).join("");
-}
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
-  }[c]));
-}
-
-document.getElementById("tabs").addEventListener("click", e => {
-  const btn = e.target.closest("[data-mode]");
-  if (!btn) return;
-  document.querySelectorAll(".tab").forEach(b => b.classList.toggle("active",b===btn));
-  renderTournaments(btn.dataset.mode);
-});
-
-document.getElementById("registrationForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const form = e.currentTarget;
-  if (!form.reportValidity()) return;
-  const data = Object.fromEntries(new FormData(form).entries());
-  const tournament = tournaments.find(t => t.id===data.tournament);
-  if (!tournament) {
-    document.getElementById("message").textContent = "Please select a valid tournament.";
-    return;
-  }
-  const entries = getRegistrations();
-  entries.push({
-    player:data.player.trim(),
-    uid:data.uid.trim(),
-    team:data.team.trim(),
-    email:data.email.trim(),
-    tournamentName:tournament.name
-  });
+async function loadTournaments() {
   try {
-    localStorage.setItem("ffDemoRegistrations",JSON.stringify(entries));
-    document.getElementById("message").textContent =
-      "Demo registration saved on this device only. The organiser has NOT been notified.";
+    setupDatabase();
+    container.innerHTML = '<p class="empty">Loading tournaments...</p>';
+
+    const {data, error} = await db
+      .from("tournaments")
+      .select("id,name,mode,match_time,status")
+      .order("id");
+
+    if (error) throw error;
+
+    tournaments = data || [];
+    renderOptions();
+    renderTournaments();
+
+    loadMessage.textContent = tournaments.length
+      ? "Tournament list loaded."
+      : "No tournaments found. Add tournaments in Supabase first.";
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = '<p class="empty">Could not load tournaments.</p>';
+    loadMessage.textContent =
+      error.message || "Check your Supabase settings and internet connection.";
+  }
+}
+
+document.getElementById("tabs").addEventListener("click", event => {
+  const button = event.target.closest("[data-mode]");
+  if (!button) return;
+
+  currentMode = button.dataset.mode;
+  document.querySelectorAll(".tab").forEach(tab => {
+    tab.classList.toggle("active", tab === button);
+  });
+  renderTournaments();
+});
+
+document.getElementById("registrationForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!db) {
+    message.textContent = "Database is not connected. Check your Supabase settings.";
+    return;
+  }
+
+  const form = event.currentTarget;
+  if (!form.reportValidity()) return;
+
+  const formData = new FormData(form);
+  const player = String(formData.get("player") || "").trim();
+  const uid = String(formData.get("uid") || "").trim();
+  const team = String(formData.get("team") || "").trim();
+  const tournamentId = Number(formData.get("tournament"));
+
+  if (!/^[0-9]{5,20}$/.test(uid)) {
+    message.textContent = "Enter a valid numeric UID.";
+    return;
+  }
+
+  const tournament = tournaments.find(t =>
+    t.id === tournamentId && t.status === "upcoming"
+  );
+
+  if (!tournament) {
+    message.textContent = "Choose an available tournament.";
+    return;
+  }
+
+  submitBtn.disabled = true;
+  message.textContent = "Submitting registration...";
+
+  try {
+    const {error} = await db.from("registrations").insert({
+      player_name: player,
+      game_uid: uid,
+      team_name: team,
+      tournament_id: tournament.id
+    });
+
+    if (error) throw error;
+
+    message.textContent =
+      "Registration submitted successfully! Contact the organiser to confirm your place.";
     form.reset();
-    renderRegistrations();
-  } catch {
-    document.getElementById("message").textContent =
-      "Could not save on this device. Check browser storage settings.";
+  } catch (error) {
+    console.error(error);
+    message.textContent =
+      "Registration failed. Check your internet connection or try again later.";
+  } finally {
+    submitBtn.disabled = false;
   }
 });
 
-renderOptions();
-renderTournaments();
-renderRegistrations();
+loadTournaments();
 </script>
 </body>
 </html>
